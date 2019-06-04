@@ -1,1 +1,0 @@
-U:\TCS\prjTCS\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
