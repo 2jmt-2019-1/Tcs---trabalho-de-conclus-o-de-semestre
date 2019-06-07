@@ -7,7 +7,7 @@ public class scrPlayer : MonoBehaviour
     #region Variaveis
 
     scrHealth Vida;
-
+    public GameObject MenuPause;
     public AudioSource Jump;
 
     #region Variaveis de movimento horizontal
@@ -71,8 +71,14 @@ public class scrPlayer : MonoBehaviour
     }
 	
 	// Update is called once per frame
+    
 	void Update ()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            MenuPause.SetActive(true);
+            Time.timeScale = 0f;
+        }
         #region No Chao
 
         NoChao = Physics2D.OverlapCircle(LocalPe.transform.position,  radius , CamadaPisavel);

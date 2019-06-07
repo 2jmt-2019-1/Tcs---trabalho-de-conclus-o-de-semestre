@@ -8,5 +8,6 @@ public class scrPlayLevel1 : MonoBehaviour {
     public void LoadLevel1()
     {
         SceneManager.LoadScene("Level1");
+        Time.timeScale = 1f;
     }
 }

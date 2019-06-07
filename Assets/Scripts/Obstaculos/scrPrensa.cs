@@ -27,13 +27,13 @@ public class scrPrensa : MonoBehaviour {
         if (Descer == false)
         {
             vpto = gameObject.transform.position;
-            vpto.y += Subindo;
+            vpto.y += (Subindo * Time.deltaTime);
             gameObject.transform.position = vpto;
         }
         if (Descer == true)
         {
             vpto = gameObject.transform.position;
-            vpto.y -= Descendo;
+            vpto.y -= (Descendo * Time.deltaTime);
             gameObject.transform.position = vpto;
         }
 	}

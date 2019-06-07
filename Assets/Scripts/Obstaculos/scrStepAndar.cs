@@ -8,6 +8,7 @@ public class scrStepAndar : MonoBehaviour {
     bool Entrou;
     SpriteRenderer SpriteRe;
     public Sprite[] button;
+    public GameObject erro;
 
 	// Use this for initialization
 	void Start () {
@@ -42,7 +43,9 @@ public class scrStepAndar : MonoBehaviour {
     {
         SpriteRe.sprite = button[0];
         Andar.SetActive(true);
-        yield return new WaitForSeconds(4);
+        erro.SetActive(true);
+        yield return new WaitForSeconds(11);
+        erro.SetActive(false);
         Andar.SetActive(false);
         SpriteRe.sprite = button[1];
     }

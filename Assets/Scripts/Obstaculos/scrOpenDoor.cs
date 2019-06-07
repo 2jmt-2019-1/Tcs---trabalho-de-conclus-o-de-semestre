@@ -43,7 +43,7 @@ public class scrOpenDoor : MonoBehaviour {
         }
     }
 
-    IEnumerator PortaAbrindo()
+    public IEnumerator PortaAbrindo()
     {
         AnimeOpen = true;
         SpriteRe.sprite = states[1];
