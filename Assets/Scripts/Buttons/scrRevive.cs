@@ -5,25 +5,19 @@ using UnityEngine;
 
 public class scrRevive : MonoBehaviour {
 
-    GameObject[] Vidas;
+    scrExtraHealth[] Vidas;
     public GameObject Morte;
 
-
-	// Use this for initialization
-	void Start () {
-        
-	}
 	
 	// Update is called once per frame
-	void Update () {
-        Vidas = GameObject.FindGameObjectsWithTag("ExtraHealth");
-	}
-
+    void Start()    {
+        Vidas = GetComponentsInChildren<scrExtraHealth>();
+    }
     public void Respawn()
     {
         for (int i = 0; i < Vidas.Length; i++)
         {
-            Vidas[i].SetActive(true);
+            Vidas[i].gameObject.SetActive(true);
         }
         var player = GameObject.FindGameObjectWithTag("Player");
         var health = player.GetComponent<scrHealth>();

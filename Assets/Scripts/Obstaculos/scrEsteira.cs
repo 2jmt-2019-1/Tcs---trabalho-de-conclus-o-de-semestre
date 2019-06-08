@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class scrEsteira : MonoBehaviour {
 
+    bool empurrando;
     public GameObject Player;
     public float Velocidade;
     public int Direção;
@@ -13,11 +14,26 @@ public class scrEsteira : MonoBehaviour {
         Health = Player.GetComponent<scrHealth>();
 	}
 
-    public void OnCollisionStay2D(Collision2D quem)
+    void FixedUpdate()
+    {
+        if (empurrando)
+        {
+            Player.GetComponent<Rigidbody2D>().AddForce(new Vector2(Velocidade * Direção, 0f), ForceMode2D.Force);
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D quem)
     {
         if (quem.gameObject.tag == "Player" && Health.Vidas >= 1)
         {
-            Player.GetComponent<Rigidbody2D>().AddForce(new Vector2(Velocidade * Direção, 0f), ForceMode2D.Force);
+            empurrando = true;
+        }
+    }
+    public void OnCollisionExit2D(Collision2D quem)
+    {
+        if (quem.gameObject.tag == "Player" && Health.Vidas >= 1)
+        {
+            empurrando = false;
         }
     }
 }

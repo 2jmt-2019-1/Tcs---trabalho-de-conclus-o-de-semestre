@@ -19,7 +19,7 @@ public class scrPlayer : MonoBehaviour
 
     #region Variaveis de movimento vertical
     float VelY;
-    bool NPulos = false;
+    int NPulos = 1;
     public bool NoChao;
     public LayerMask CamadaPisavel;
     public Transform LocalPe;
@@ -38,24 +38,19 @@ public class scrPlayer : MonoBehaviour
     void FixedUpdate()
     {
         #region Movimentação Vertical
-
+        
+        NoChao = Physics2D.OverlapCircle(LocalPe.transform.position,  radius , CamadaPisavel);
+        //Bug de não conseguir pular certas vezes no primeiro pulo
         if (Input.GetButtonDown("Jump") && NoChao)
         {
             if (Jump)
             {
                 Jump.Play();
             }
-            RigidBody.AddForce( new Vector2(0f,ForcaPulo), ForceMode2D.Impulse);
-        }
-        if (Input.GetButtonDown("Jump") && !NoChao && NPulos)
-        {
-            if (Jump)
-            {
-                Jump.Play();
-            }
-            NPulos = false;
             RigidBody.AddForce(new Vector2(0f, ForcaPulo), ForceMode2D.Impulse);
         }
+
+        StartCoroutine(Pulo());
 
         VeloY = RigidBody.velocity.y;
 
@@ -81,11 +76,11 @@ public class scrPlayer : MonoBehaviour
         }
         #region No Chao
 
-        NoChao = Physics2D.OverlapCircle(LocalPe.transform.position,  radius , CamadaPisavel);
+       
 
         if (NoChao == true)
         {
-            NPulos = true;
+            NPulos = 0;
         }
 
         #endregion
@@ -95,5 +90,19 @@ public class scrPlayer : MonoBehaviour
         EixoX = Input.GetAxis("Horizontal");
 
         #endregion
+    }
+
+    IEnumerator Pulo()
+    {
+        yield return new WaitForSeconds(0.05f);
+        if (Input.GetButtonDown("Jump") && !NoChao && NPulos == 0)
+        {
+            if (Jump)
+            {
+                Jump.Play();
+            }
+            NPulos++;
+            RigidBody.AddForce(new Vector2(0f, ForcaPulo), ForceMode2D.Impulse);
+        }
     }
 }
