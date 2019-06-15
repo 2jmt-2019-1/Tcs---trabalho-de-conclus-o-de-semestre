@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class scrFadeStart : MonoBehaviour {
 
+    
     Text textVidas;
     Image telaPreta;
     public Color[] cores;

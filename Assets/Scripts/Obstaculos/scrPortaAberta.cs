@@ -13,6 +13,7 @@ public class scrPortaAberta : MonoBehaviour {
     public Image Vida;
     float taxaTransicao = 0f;
 
+    public GameObject Level;
     public float AxisY;
     public float AxisX;
     bool entrou;

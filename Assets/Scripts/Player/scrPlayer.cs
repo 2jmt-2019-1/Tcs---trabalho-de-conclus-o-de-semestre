@@ -6,6 +6,7 @@ public class scrPlayer : MonoBehaviour
 {
     #region Variaveis
 
+    bool pullo;
     scrHealth Vida;
     public GameObject MenuPause;
     public AudioSource Jump;
@@ -19,7 +20,7 @@ public class scrPlayer : MonoBehaviour
 
     #region Variaveis de movimento vertical
     float VelY;
-    int NPulos = 1;
+    public bool NPulos = false;
     public bool NoChao;
     public LayerMask CamadaPisavel;
     public Transform LocalPe;
@@ -41,7 +42,8 @@ public class scrPlayer : MonoBehaviour
         
         NoChao = Physics2D.OverlapCircle(LocalPe.transform.position,  radius , CamadaPisavel);
         //Bug de não conseguir pular certas vezes no primeiro pulo
-        if (Input.GetButtonDown("Jump") && NoChao)
+
+        if (Input.GetButtonDown("Jump") && NoChao && !pullo)
         {
             if (Jump)
             {
@@ -69,6 +71,7 @@ public class scrPlayer : MonoBehaviour
     
 	void Update ()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             MenuPause.SetActive(true);
@@ -80,7 +83,7 @@ public class scrPlayer : MonoBehaviour
 
         if (NoChao == true)
         {
-            NPulos = 0;
+            NPulos = false;
         }
 
         #endregion
@@ -94,15 +97,30 @@ public class scrPlayer : MonoBehaviour
 
     IEnumerator Pulo()
     {
-        yield return new WaitForSeconds(0.05f);
-        if (Input.GetButtonDown("Jump") && !NoChao && NPulos == 0)
+        pullo = true;
+        if (Input.GetButtonDown("Jump") && NoChao)
         {
             if (Jump)
             {
                 Jump.Play();
             }
-            NPulos++;
             RigidBody.AddForce(new Vector2(0f, ForcaPulo), ForceMode2D.Impulse);
+            pullo = false;
+        }
+        yield return new WaitForSeconds(0.05f);
+        if (!NPulos)
+        {
+            if (Input.GetButtonDown("Jump") && !NoChao)
+            {
+                pullo = false;
+                if (Jump)
+                {
+                    Jump.Play();
+                }
+                NPulos = true;
+                RigidBody.AddForce(new Vector2(0f, ForcaPulo), ForceMode2D.Impulse);
+            }
         }
     }
+    
 }

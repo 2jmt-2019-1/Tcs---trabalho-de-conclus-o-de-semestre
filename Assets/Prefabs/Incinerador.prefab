@@ -46,6 +46,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1620482357433768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4889503601101100}
+  - component: {fileID: 108080688731738728}
+  m_Layer: 0
+  m_Name: LuzIncinerador
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4721722096336424
 Transform:
   m_ObjectHideFlags: 1
@@ -53,10 +69,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568408117723360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -303.22806, y: -105.2948, z: 0}
-  m_LocalScale: {x: 15.169353, y: 15.169353, z: 15.169353}
+  m_LocalPosition: {x: -193.67, y: -3.8439078, z: 0}
+  m_LocalScale: {x: 15.16935, y: 15.16935, z: 10.303537}
   m_Children:
   - {fileID: 4729071611888014}
+  - {fileID: 4889503601101100}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -72,6 +89,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4721722096336424}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4889503601101100
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620482357433768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.059, y: -0.101, z: -0.614}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4721722096336424}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &61233404735010054
 BoxCollider2D:
@@ -140,6 +170,42 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!108 &108080688731738728
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620482357433768}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 0.44852942, g: 0.16703853, b: 0, a: 1}
+  m_Intensity: 11.96
+  m_Range: 16.2
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!114 &114536595117026440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,6 +217,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed68d5b7692cd745beef5a1a6f2f62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inc:
+  - {fileID: 21300000, guid: 8559e81b08531f841bfb85edb7f6aab8, type: 3}
+  - {fileID: 21300002, guid: 8559e81b08531f841bfb85edb7f6aab8, type: 3}
+  - {fileID: 21300004, guid: 8559e81b08531f841bfb85edb7f6aab8, type: 3}
+  - {fileID: 21300006, guid: 8559e81b08531f841bfb85edb7f6aab8, type: 3}
+  - {fileID: 21300008, guid: 8559e81b08531f841bfb85edb7f6aab8, type: 3}
+  - {fileID: 21300010, guid: 8559e81b08531f841bfb85edb7f6aab8, type: 3}
+  - {fileID: 21300014, guid: 8559e81b08531f841bfb85edb7f6aab8, type: 3}
+  luzIncinerador: {fileID: 108080688731738728}
   Morreu: 0
 --- !u!212 &212724524370324330
 SpriteRenderer:
@@ -166,7 +241,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 54e22d14d564d804aaabd4ababd95db8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

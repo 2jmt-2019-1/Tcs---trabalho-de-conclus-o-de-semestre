@@ -5,31 +5,24 @@ using UnityEngine;
 
 public class scrRevive : MonoBehaviour {
 
-    scrExtraHealth[] Vidas;
+    int nivel;
     public GameObject Morte;
 
-	
-	// Update is called once per frame
-    void Start()    {
-        Vidas = GetComponentsInChildren<scrExtraHealth>();
-    }
-    public void Respawn()
+    private void Start()
     {
-        for (int i = 0; i < Vidas.Length; i++)
-        {
-            Vidas[i].gameObject.SetActive(true);
-        }
-        var player = GameObject.FindGameObjectWithTag("Player");
-        var health = player.GetComponent<scrHealth>();
-        var move = player.GetComponent<scrPlayer>();
-        var respawn = GameObject.FindGameObjectWithTag("Respawn");
-        move.enabled = true;
-        health.DeathMusic.Stop();
-        health.Music.Play();
-        Morte.SetActive(false);
-        health.Death.Stop();
-        player.transform.position = respawn.transform.position;
-        health.Vidas = 5;
-        health.Vida.text = "X " + health.Vidas;
+    }
+    private void Update()
+    {
+        nivel = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    public void reviver()
+    {
+        SceneManager.LoadScene(nivel);
+    }
+    IEnumerator rev()
+    {
+        yield return new WaitForSeconds(0.05f);
+        SceneManager.LoadScene(nivel);
     }
 }

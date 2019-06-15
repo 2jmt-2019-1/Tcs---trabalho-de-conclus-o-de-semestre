@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class scrEsteira : MonoBehaviour {
 
-    bool empurrando;
+    bool empurrando = false;
     public GameObject Player;
     public float Velocidade;
     public int Direção;
@@ -32,6 +32,17 @@ public class scrEsteira : MonoBehaviour {
     public void OnCollisionExit2D(Collision2D quem)
     {
         if (quem.gameObject.tag == "Player" && Health.Vidas >= 1)
+        {
+            empurrando = false;
+        }
+    }
+    public void OnCollisionStay2D(Collision2D quem)
+    {
+        if (quem.gameObject.tag == "Player" && Health.Vidas >= 1)
+        {
+            empurrando = true;
+        }
+        else
         {
             empurrando = false;
         }

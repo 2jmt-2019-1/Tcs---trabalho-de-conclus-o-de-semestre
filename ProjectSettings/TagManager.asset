@@ -16,6 +16,11 @@ TagManager:
   - VidaImage
   - "Transi\xE7\xE3o"
   - PlayerSet
+  - RobotRange
+  - HealthHold
+  - RevB
+  - Animador
+  - Armario
   layers:
   - Default
   - TransparentFX
